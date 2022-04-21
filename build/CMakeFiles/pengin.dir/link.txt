@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/pengin.dir/glad.c.o CMakeFiles/pengin.dir/main.cpp.o -o pengin  -lGL -ldl -lglfw 
