@@ -1,4 +1,4 @@
-# Install script for directory: /home/nico/Projects/pengin/src
+# Install script for directory: /home/nico/Projects/pengin
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
