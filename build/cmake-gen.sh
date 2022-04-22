@@ -1,2 +1,0 @@
-cd ..
-cmake -Bbuild -S.

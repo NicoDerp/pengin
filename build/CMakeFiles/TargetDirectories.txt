@@ -1,3 +1,0 @@
-/home/nico/Projects/pengin/build/CMakeFiles/pengin.dir
-/home/nico/Projects/pengin/build/CMakeFiles/edit_cache.dir
-/home/nico/Projects/pengin/build/CMakeFiles/rebuild_cache.dir
