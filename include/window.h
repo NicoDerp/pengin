@@ -4,6 +4,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#define MAX_KEYS 1024
+
 namespace pengin { namespace graphics {
 
 	class Window
@@ -13,12 +15,14 @@ namespace pengin { namespace graphics {
 		int m_Width, m_Height;
 		GLFWwindow* m_Window;
 
+		bool m_Keys[MAX_KEYS];
+
 	public:
 		Window(int width, int height, const char* title);
 		~Window();
 
-
 		void update();
+		bool isKeyPressed(int keycode);
 
 		bool closed() const;
 		void clear() const;
@@ -27,6 +31,8 @@ namespace pengin { namespace graphics {
 
 	private:
 		bool init();
+		friend void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
 	};
 } }
 

@@ -17,7 +17,7 @@ int main()
 
 	while (!window.closed())
 	{
-		if (Input::isKeyPressed('e'))
+		if (window.isKeyPressed(GLFW_KEY_E))
 			printf("Let's goo!\n");
 
 		window.clear();

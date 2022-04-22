@@ -4,6 +4,8 @@
 
 namespace pengin { namespace graphics {
 
+	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
 	Window::Window(int width, int height, const char* title)
 	{
 		m_Width = width;
@@ -20,6 +22,9 @@ namespace pengin { namespace graphics {
 
 	bool Window::init()
 	{
+		for (int i=0; i<MAX_KEYS;i++)
+			m_Keys[i] = false;
+
 		m_Window = glfwCreateWindow(m_Width, m_Height, m_Title, NULL, NULL);
 		if (!m_Window)
 		{
@@ -32,6 +37,8 @@ namespace pengin { namespace graphics {
 			printf("Failed to initialize Glad\n");
 			return false;
 		}
+		glfwSetKeyCallback(m_Window, key_callback);
+		glfwSetWindowUserPointer(m_Window, this);
 		return true;
 	}
 
@@ -51,6 +58,19 @@ namespace pengin { namespace graphics {
 	void Window::clear() const
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	}
+
+	bool Window::isKeyPressed(int keycode)
+	{
+		if (keycode >= MAX_KEYS)
+			return false;
+		return m_Keys[keycode];
+	}
+
+	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+	{
+		Window* win = (Window*) glfwGetWindowUserPointer(window);
+		win->m_Keys[key] = action != GLFW_RELEASE;
 	}
 
 } }
