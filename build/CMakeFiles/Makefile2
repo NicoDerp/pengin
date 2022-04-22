@@ -81,12 +81,12 @@ clean: CMakeFiles/pengin.dir/clean
 CMakeFiles/pengin.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pengin.dir/build.make CMakeFiles/pengin.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pengin.dir/build.make CMakeFiles/pengin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nico/Projects/pengin/build/CMakeFiles --progress-num=1,2,3 "Built target pengin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nico/Projects/pengin/build/CMakeFiles --progress-num=1,2,3,4 "Built target pengin"
 .PHONY : CMakeFiles/pengin.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/pengin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nico/Projects/pengin/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nico/Projects/pengin/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/pengin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nico/Projects/pengin/build/CMakeFiles 0
 .PHONY : CMakeFiles/pengin.dir/rule

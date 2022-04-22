@@ -83,33 +83,49 @@ CMakeFiles/pengin.dir/src/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/pengin.dir/src/glad.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/nico/Projects/pengin/src/glad.c -o CMakeFiles/pengin.dir/src/glad.c.s
 
-CMakeFiles/pengin.dir/src/main.cpp.o: CMakeFiles/pengin.dir/flags.make
-CMakeFiles/pengin.dir/src/main.cpp.o: ../src/main.cpp
-CMakeFiles/pengin.dir/src/main.cpp.o: CMakeFiles/pengin.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nico/Projects/pengin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/pengin.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pengin.dir/src/main.cpp.o -MF CMakeFiles/pengin.dir/src/main.cpp.o.d -o CMakeFiles/pengin.dir/src/main.cpp.o -c /home/nico/Projects/pengin/src/main.cpp
+CMakeFiles/pengin.dir/main.cpp.o: CMakeFiles/pengin.dir/flags.make
+CMakeFiles/pengin.dir/main.cpp.o: ../main.cpp
+CMakeFiles/pengin.dir/main.cpp.o: CMakeFiles/pengin.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nico/Projects/pengin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/pengin.dir/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pengin.dir/main.cpp.o -MF CMakeFiles/pengin.dir/main.cpp.o.d -o CMakeFiles/pengin.dir/main.cpp.o -c /home/nico/Projects/pengin/main.cpp
 
-CMakeFiles/pengin.dir/src/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pengin.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nico/Projects/pengin/src/main.cpp > CMakeFiles/pengin.dir/src/main.cpp.i
+CMakeFiles/pengin.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pengin.dir/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nico/Projects/pengin/main.cpp > CMakeFiles/pengin.dir/main.cpp.i
 
-CMakeFiles/pengin.dir/src/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pengin.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nico/Projects/pengin/src/main.cpp -o CMakeFiles/pengin.dir/src/main.cpp.s
+CMakeFiles/pengin.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pengin.dir/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nico/Projects/pengin/main.cpp -o CMakeFiles/pengin.dir/main.cpp.s
+
+CMakeFiles/pengin.dir/src/window.cpp.o: CMakeFiles/pengin.dir/flags.make
+CMakeFiles/pengin.dir/src/window.cpp.o: ../src/window.cpp
+CMakeFiles/pengin.dir/src/window.cpp.o: CMakeFiles/pengin.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nico/Projects/pengin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/pengin.dir/src/window.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pengin.dir/src/window.cpp.o -MF CMakeFiles/pengin.dir/src/window.cpp.o.d -o CMakeFiles/pengin.dir/src/window.cpp.o -c /home/nico/Projects/pengin/src/window.cpp
+
+CMakeFiles/pengin.dir/src/window.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pengin.dir/src/window.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nico/Projects/pengin/src/window.cpp > CMakeFiles/pengin.dir/src/window.cpp.i
+
+CMakeFiles/pengin.dir/src/window.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pengin.dir/src/window.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nico/Projects/pengin/src/window.cpp -o CMakeFiles/pengin.dir/src/window.cpp.s
 
 # Object files for target pengin
 pengin_OBJECTS = \
 "CMakeFiles/pengin.dir/src/glad.c.o" \
-"CMakeFiles/pengin.dir/src/main.cpp.o"
+"CMakeFiles/pengin.dir/main.cpp.o" \
+"CMakeFiles/pengin.dir/src/window.cpp.o"
 
 # External object files for target pengin
 pengin_EXTERNAL_OBJECTS =
 
 pengin: CMakeFiles/pengin.dir/src/glad.c.o
-pengin: CMakeFiles/pengin.dir/src/main.cpp.o
+pengin: CMakeFiles/pengin.dir/main.cpp.o
+pengin: CMakeFiles/pengin.dir/src/window.cpp.o
 pengin: CMakeFiles/pengin.dir/build.make
 pengin: CMakeFiles/pengin.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nico/Projects/pengin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable pengin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nico/Projects/pengin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable pengin"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pengin.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

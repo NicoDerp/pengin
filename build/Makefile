@@ -129,6 +129,30 @@ pengin/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pengin.dir/build.make CMakeFiles/pengin.dir/build
 .PHONY : pengin/fast
 
+main.o: main.cpp.o
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pengin.dir/build.make CMakeFiles/pengin.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pengin.dir/build.make CMakeFiles/pengin.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pengin.dir/build.make CMakeFiles/pengin.dir/main.cpp.s
+.PHONY : main.cpp.s
+
 src/glad.o: src/glad.c.o
 .PHONY : src/glad.o
 
@@ -153,29 +177,29 @@ src/glad.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pengin.dir/build.make CMakeFiles/pengin.dir/src/glad.c.s
 .PHONY : src/glad.c.s
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+src/window.o: src/window.cpp.o
+.PHONY : src/window.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pengin.dir/build.make CMakeFiles/pengin.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+src/window.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pengin.dir/build.make CMakeFiles/pengin.dir/src/window.cpp.o
+.PHONY : src/window.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+src/window.i: src/window.cpp.i
+.PHONY : src/window.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pengin.dir/build.make CMakeFiles/pengin.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+src/window.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pengin.dir/build.make CMakeFiles/pengin.dir/src/window.cpp.i
+.PHONY : src/window.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+src/window.s: src/window.cpp.s
+.PHONY : src/window.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pengin.dir/build.make CMakeFiles/pengin.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+src/window.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pengin.dir/build.make CMakeFiles/pengin.dir/src/window.cpp.s
+.PHONY : src/window.cpp.s
 
 # Help Target
 help:
@@ -186,12 +210,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... pengin"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 	@echo "... src/glad.o"
 	@echo "... src/glad.i"
 	@echo "... src/glad.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... src/window.o"
+	@echo "... src/window.i"
+	@echo "... src/window.s"
 .PHONY : help
 
 

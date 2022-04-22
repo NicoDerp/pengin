@@ -1,12 +1,35 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#include "include/window.h"
+#include <iostream>
 
 int main()
 {
-	glfwInit();
-	GLFWwindow* w = glfwCreateWindow(600, 600, "triangle", NULL, NULL);
-	glfwMakeContextCurrent(w);
-	gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
+	using namespace pengin;
+	using namespace graphics;
+
+	if (!glfwInit())
+	{
+		printf("[ERROR] Failed to initialize GLFW!");
+		return -1;
+	}
+
+	Window window(600, 600, "Pengin test");
+	glClearColor(0.2f, 0.3f, 0.6f, 1.0f);
+
+	while (!window.closed())
+	{
+		if (Input::isKeyPressed('e'))
+			printf("Let's goo!\n");
+
+		window.clear();
+		glBegin(GL_TRIANGLES);
+		glVertex2f(-0.5f, -0.5f);
+		glVertex2f( 0.0f,  0.5f);
+		glVertex2f( 0.5f, -0.5f);
+		glEnd();
+		window.update();
+	}
+
+	/*
 	float t[] =
 	{
 		-0.5f, -0.5f, 0.0f,
@@ -26,5 +49,6 @@ int main()
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glfwSwapBuffers(w);
 		glfwPollEvents();
-	}
+	}*/
+	return 0;
 }
