@@ -6,19 +6,16 @@ int main()
 	using namespace pengin;
 	using namespace graphics;
 
-	if (!glfwInit())
-	{
-		printf("[ERROR] Failed to initialize GLFW!");
-		return -1;
-	}
-
 	Window window(600, 600, "Pengin test");
 	glClearColor(0.2f, 0.3f, 0.6f, 1.0f);
 
 	while (!window.closed())
 	{
 		if (window.isKeyPressed(GLFW_KEY_E))
-			printf("Let's goo!\n");
+			printf("e pressed\n");
+
+		if (window.isMousePressed(GLFW_MOUSE_BUTTON_1))
+			printf("mouse pressed\n");
 
 		window.clear();
 		glBegin(GL_TRIANGLES);
