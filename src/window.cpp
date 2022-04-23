@@ -13,6 +13,15 @@ namespace pengin { namespace graphics {
 		m_Width = width;
 		m_Height = height;
 		m_Title = title;
+		m_Fullscreen = false;
+		if (!init())
+			glfwTerminate();
+	}
+
+	Window::Window(const char* title)
+	{
+		m_Title = title;
+		m_Fullscreen = true;
 		if (!init())
 			glfwTerminate();
 	}
@@ -35,7 +44,23 @@ namespace pengin { namespace graphics {
 		for (int i=0; i<MAX_MOUSEBUTTONS;i++)
 			m_MouseButtons[i] = false;
 
-		m_Window = glfwCreateWindow(m_Width, m_Height, m_Title, NULL, NULL);
+		if (m_Fullscreen)
+		{
+			GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+			const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+
+			glfwWindowHint(GLFW_RED_BITS, mode->redBits);
+			glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
+			glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
+			glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
+
+			m_Width = mode->width;
+			m_Height = mode->height;
+
+			m_Window = glfwCreateWindow(m_Width, m_Height, m_Title, monitor, NULL);
+		}
+		else
+			m_Window = glfwCreateWindow(m_Width, m_Height, m_Title, NULL, NULL);
 		if (!m_Window)
 		{
 			printf("[ERROR] Failed to create GLFW window!");

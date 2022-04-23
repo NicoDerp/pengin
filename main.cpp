@@ -11,11 +11,8 @@ int main()
 
 	while (!window.closed())
 	{
-		if (window.isKeyPressed(GLFW_KEY_E))
-			printf("e pressed\n");
-
-		if (window.isMousePressed(GLFW_MOUSE_BUTTON_1))
-			printf("mouse pressed\n");
+		if (window.isKeyPressed(GLFW_KEY_ESCAPE))
+			break;
 
 		window.clear();
 		glBegin(GL_TRIANGLES);

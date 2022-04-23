@@ -14,6 +14,7 @@ namespace pengin { namespace graphics {
 	private:
 		const char* m_Title;
 		int m_Width, m_Height;
+		bool m_Fullscreen;
 		GLFWwindow* m_Window;
 
 		bool m_Keys[MAX_KEYS];
@@ -22,6 +23,7 @@ namespace pengin { namespace graphics {
 
 	public:
 		Window(int width, int height, const char* title);
+		Window(const char* title);
 		~Window();
 
 		void update();
