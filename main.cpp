@@ -11,8 +11,21 @@ int main()
 
 	while (!window.closed())
 	{
-		if (window.isKeyPressed(GLFW_KEY_ESCAPE))
+		if (window.isKeyDown(GLFW_KEY_ESCAPE))
 			break;
+
+		if (window.isKeyDown(GLFW_KEY_L))
+			printf("aa\n");
+
+		if (window.isKeyDown(GLFW_KEY_Q))
+		{
+			bool fullscreen = window.isFullscreen();
+			window.setFullscreen(!fullscreen);
+		}
+
+		double x, y;
+		window.getMousePosition(&x, &y);
+		printf("Cursor position: %f, %f\n", x, y);
 
 		window.clear();
 		glBegin(GL_TRIANGLES);

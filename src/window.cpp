@@ -6,22 +6,18 @@ namespace pengin { namespace graphics {
 
 	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	void mousebutton_callback(GLFWwindow* window, int button, int action, int mods);
-	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+	void cursorpos_callback(GLFWwindow* window, double xpos, double ypos);
 
 	Window::Window(int width, int height, const char* title)
 	{
 		m_Width = width;
+		m_CurrWidth = width;
 		m_Height = height;
+		m_CurrHeight = height;
 		m_Title = title;
 		m_Fullscreen = false;
-		if (!init())
-			glfwTerminate();
-	}
-
-	Window::Window(const char* title)
-	{
-		m_Title = title;
-		m_Fullscreen = true;
+		mx = 0;
+		my = 0;
 		if (!init())
 			glfwTerminate();
 	}
@@ -44,23 +40,8 @@ namespace pengin { namespace graphics {
 		for (int i=0; i<MAX_MOUSEBUTTONS;i++)
 			m_MouseButtons[i] = false;
 
-		if (m_Fullscreen)
-		{
-			GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-			const GLFWvidmode* mode = glfwGetVideoMode(monitor);
-
-			glfwWindowHint(GLFW_RED_BITS, mode->redBits);
-			glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
-			glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
-			glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
-
-			m_Width = mode->width;
-			m_Height = mode->height;
-
-			m_Window = glfwCreateWindow(m_Width, m_Height, m_Title, monitor, NULL);
-		}
-		else
-			m_Window = glfwCreateWindow(m_Width, m_Height, m_Title, NULL, NULL);
+		m_Monitor = glfwGetPrimaryMonitor();
+		m_Window = glfwCreateWindow(m_Width, m_Height, m_Title, NULL, NULL);
 		if (!m_Window)
 		{
 			printf("[ERROR] Failed to create GLFW window!");
@@ -74,8 +55,34 @@ namespace pengin { namespace graphics {
 		}
 		glfwSetKeyCallback(m_Window, key_callback);
 		glfwSetMouseButtonCallback(m_Window, mousebutton_callback);
+		glfwSetCursorPosCallback(m_Window, cursorpos_callback);
+
 		glfwSetWindowUserPointer(m_Window, this);
 		return true;
+	}
+
+	void Window::setFullscreen(bool fullscreen)
+	{
+		if (fullscreen == m_Fullscreen)
+			return;
+
+		m_Fullscreen = fullscreen;
+
+		const GLFWvidmode* mode = glfwGetVideoMode(m_Monitor);
+
+		if (fullscreen)
+		{
+			m_CurrWidth = mode->width;
+			m_CurrHeight = mode->height;
+			glfwSetWindowMonitor(m_Window, m_Monitor, 0, 0, m_CurrWidth, m_CurrHeight, mode->refreshRate);
+		}
+		else
+		{
+			m_CurrWidth = m_Width;
+			m_CurrHeight = m_Height;
+			glfwSetWindowMonitor(m_Window, NULL, 0, 0, m_CurrWidth, m_CurrHeight, mode->refreshRate);
+		}
+
 	}
 
 	bool Window::closed() const
@@ -85,9 +92,10 @@ namespace pengin { namespace graphics {
 
 	void Window::update()
 	{
+		//printf("w, h: (%d, %d); cw, ch: (%d, %d)\n", m_Width, m_Height, m_CurrWidth, m_CurrHeight);
 		glfwSwapBuffers(m_Window);
-		glfwGetFramebufferSize(m_Window, &m_Width, &m_Height);
-		glViewport(0, 0, m_Width, m_Height);
+		glfwGetFramebufferSize(m_Window, &m_CurrWidth, &m_CurrHeight);
+		glViewport(0, 0, m_CurrWidth, m_CurrHeight);
 		glfwPollEvents();
 	}
 
@@ -96,11 +104,18 @@ namespace pengin { namespace graphics {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
-	bool Window::isKeyPressed(int keycode)
+	bool Window::isKeyDown(int keycode)
 	{
 		if (keycode >= MAX_KEYS)
 			return false;
 		return m_Keys[keycode];
+	}
+
+	bool Window::isKeyPressed(int keycode)
+	{
+		if (keycode >= MAX_KEYS)
+			return false;
+		return m_KeysPressed[keycode];
 	}
 
 	bool Window::isMousePressed(int keycode)
@@ -108,6 +123,12 @@ namespace pengin { namespace graphics {
 		if (keycode >= MAX_MOUSEBUTTONS)
 			return false;
 		return m_MouseButtons[keycode];
+	}
+
+	void Window::getMousePosition(double* x, double* y)
+	{
+		*x = mx;
+		*y = my;
 	}
 
 	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -122,5 +143,11 @@ namespace pengin { namespace graphics {
 		win->m_MouseButtons[button] = action != GLFW_RELEASE;
 	}
 
+	void cursorpos_callback(GLFWwindow* window, double xpos, double ypos)
+	{
+		Window* win = (Window*) glfwGetWindowUserPointer(window);
+		win->mx = xpos;
+		win->my = ypos;
+	}
 
 } }
